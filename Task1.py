@@ -1,25 +1,25 @@
-string = int(input())
-k = string
-lenOfK = 0  # длинна числа
-while k > 0:
-    k = int(k / 10)
-    lenOfK += 1
+"""
+Палиндром
+Ввести целое положительное число и проверить, является ли оно палиндромом,
+т. е. совпадает ли первая цифра с последней, вторая — с предпоследней и т. д.
+Представлять число в виде последовательности (строки, списка и т. п.) нельзя.
+Вывести YES или NO соответственно.
+Лидирующие нули не учитывать (числа, заканчивающиеся на 0 — автоматически не палиндромы).
 
-LastRight = int(lenOfK / 2)  # Середина справа
-FirsrtLeft = lenOfK - 1  # Последний элемент
-allfine = True  # Маркер палиндром
-k = 0  # первый элемент
-while LastRight > k:
-    a = int((string / (10 ** FirsrtLeft)) % 10)
-    b = int(string / (10 ** k) % 10)
-    if not a == b:
-        allfine = False
-        break
-    k += 1
-    FirsrtLeft -= 1
+Example:
+Input: 1234321
+Output: YES
+"""
+Check_Number = int(input())
+Buffer = Check_Number
+Reverse_Number = 0
 
-##if string == string[::-1]:
-if allfine:
+while Buffer > 0:
+    Reverse_Number = Reverse_Number * 10
+    Reverse_Number += Buffer % 10
+    Buffer = int(Buffer / 10)
+
+if (Reverse_Number - Check_Number) == 0:
     print("YES")
 else:
     print("NO")
