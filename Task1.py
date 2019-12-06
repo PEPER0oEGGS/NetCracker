@@ -10,16 +10,15 @@ Example:
 Input: 1234321
 Output: YES
 """
-Check_Number = int(input())
-Buffer = Check_Number
-Reverse_Number = 0
+check_number = int(input())
+buffer = check_number
+reverse_number = 0
 
-while Buffer > 0:
-    Reverse_Number = Reverse_Number * 10
-    Reverse_Number += Buffer % 10
-    Buffer = int(Buffer / 10)
+while buffer > 0:
+    reverse_number = reverse_number * 10 + buffer % 10
+    buffer //= 10
 
-if (Reverse_Number - Check_Number) == 0:
+if reverse_number == check_number:
     print("YES")
 else:
     print("NO")

@@ -1,5 +1,4 @@
 """
-
 Чудо-Конвейер
 
 Ввести последовательность объектов Python (кортежей или целых чисел), и сымитировать работу Чудо-Конвейера.
@@ -20,9 +19,9 @@ Output:
 (7, 7, 12)
 """
 
-Conveer_input = eval(input())
+сonveer_input = eval(input())
 queue = []
-for unit in Conveer_input:
+for unit in сonveer_input:
     if type(unit) is tuple:
         ##Add elements of tuple in queue
         queue.extend(unit)
