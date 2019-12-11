@@ -31,13 +31,22 @@ def fix_float(presision):
     def decorator(f):
         def wraper(*args, **kwargs):
             args_pres = []
+            kwargs_press = {}
+
             for i in args:
                 if type(i) is float:
-                    args_pres.append(round(i, presision))
-                else:
-                    args_pres.append(i)
-            args_pres = tuple(args_pres)
+                    i = round(i, presision)
+                args_pres.append(i)
+
+            for k, i in kwargs.items():
+                if type(i) is float:
+                    i = round(i, presision)
+                if type(k) is float:
+                    k = round(k, presision)
+                kwargs_press[k] = i
+
             res = f(*args_pres, **kwargs)
+
             if type(res) is float:
                 return round(res, presision)
             else:
