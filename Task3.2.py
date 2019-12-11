@@ -17,19 +17,20 @@ P.S. если использовать модуль itertools (https://docs.pyth
 
 
 def chain_slice(*args):
-    start, stop = args[0:2]
+    """args = (start, stop, iterator1, iterator2, iterator3,...)"""
+    iterators = list(args)
+    start, stop = iterators[0:2]
+    del (iterators[0:2])
     marker = 0
     res = ""
-    args = list(args)
-    del (args[0:2])
-    for iterator in args:
+    for iterator in iterators:
         for i in iterator:
             marker += 1
             if (marker > start):
                 res += str(i)
                 if marker == stop:
-                    break
-    return res
+                    return res
+
 
 
 print(*(chain_slice(17, 33, range(7), range(8), range(6), range(9), range(5))))
