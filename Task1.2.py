@@ -16,9 +16,14 @@ print(get_min_function(range(-2,10), sin, cos, exp)(1)
 from math import *
 import functools
 
-def get_min_function(interval, Function1, Function2, Function3):
-    list_of_min = [sum(map(Function1, interval)),sum(map(Function2, interval)),sum(map(Function3, interval))]
-    return [Function1, Function2, Function3][list_of_min.index(min(list_of_min))]
+def get_min_function(*args):
+    """ args = (interval, function1, function2, function3,...)"""
+    function = list(args)
+    interval = function.pop(0)
+    slove = []
+    for f in function:
+        slove.append(sum(map(f, interval)))
+    return function[slove.index(min(slove))]
 
 
 print(get_min_function(range(-2, 10), sin, cos, exp)(1))
